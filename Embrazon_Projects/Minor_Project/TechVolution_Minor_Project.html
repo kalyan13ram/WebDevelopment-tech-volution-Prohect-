@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechVolution 2024 Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(45deg, yellow, violet);
+    }
+    .container {
+      max-width: 600px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center">TechVolution 2024 Registration</h2>
+    <form id="registrationForm">
+      <!-- Personal Information -->
+      <!--Author:- KALYAN RAM PRATHAPURAM-->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <div class="form-group">
+        <label>Gender</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="male" value="Male" required>
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" id="nonbinary" value="Non-binary">
+          <label class="form-check-label" for="nonbinary">Non-binary</label>
+        </div>
+      </div>
+      <!-- Contact Details -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="street">Street Address</label>
+        <input type="text" class="form-control" id="street" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" required>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select class="form-control" id="state" required>
+          <option value="">Select State</option>
+          <option value="CA">California</option>
+          <option value="NY">New York</option>
+          <option value="TX">Texas</option>
+          <!-- Add more states as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="zip">Zip Code</label>
+        <input type="text" class="form-control" id="zip" required>
+      </div>
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="preferences">Event Preferences</label>
+        <select class="form-control" id="preferences" required>
+          <option value="select">Select Preferences</option>
+          <option value="workshops">Workshops</option>
+          <option value="lectures">Lectures</option>
+          <option value="networking">Networking</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dietary">Dietary Restrictions</label>
+        <textarea class="form-control" id="dietary" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="tshirt">T-shirt Size</label>
+        <select class="form-control" id="tshirt" required>
+          <option value="">Select Size</option>
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">X-Large</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <!-- Toast message for successful submission -->
+    <div class="toast" id="successToast" data-delay="5000" style="position: absolute; top: 20px; right: 20px;">
+      <div class="toast-header">
+        <strong class="mr-auto">Success</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+      </div>
+      <div class="toast-body">
+        Registration successful!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Form validation
+      let valid = true;
+
+      // Name validation
+      if (!document.getElementById('name').value.trim()) {
+        valid = false;
+        alert('Please enter your name.');
+      }
+
+      // Email validation
+      const email = document.getElementById('email').value;
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        valid = false;
+        alert('Please enter a valid email address.');
+      }
+
+      // Phone validation
+      const phone = document.getElementById('phone').value;
+      const phonePattern = /^\d{10}$/;
+      if (!phone.match(phonePattern)) {
+        valid = false;
+        alert('Please enter a valid 10-digit phone number.');
+      }
+
+      // Date of Birth validation
+      const dob = document.getElementById('dob').value;
+      if (!dob) {
+        valid = false;
+        alert('Please enter your date of birth.');
+      }
+
+      if (valid) {
+        // Show success toast
+        $('#successToast').toast('show');
+        document.getElementById('registrationForm').reset();
+      }
+    });
+  </script>
+</body>
+</html>
